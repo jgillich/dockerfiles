@@ -6,6 +6,7 @@ RUN rm -rf /var/cache/apk/*
 
 RUN gem install middleman
 
+WORKDIR /site
 ENV MM_ROOT /site
 VOLUME /site
 
