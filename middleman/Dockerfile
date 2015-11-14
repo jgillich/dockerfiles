@@ -1,8 +1,7 @@
 FROM alpine:3.2
 
-RUN apk add --update ruby ruby-bundler ruby-dev ruby-nokogiri \
-    build-base libffi libffi-dev zlib-dev nodejs
-RUN rm -rf /var/cache/apk/*
+RUN apk add --update ruby ruby-bundler ruby-dev ruby-nokogiri build-base libffi libffi-dev zlib-dev nodejs && \
+    rm -rf /var/cache/apk/*
 
 RUN gem install middleman
 
