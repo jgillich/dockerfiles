@@ -4,19 +4,12 @@ MAINTAINER Jakob Gillich <jakob@gillich.me>
 ARG INVOICEPLANE_VERSION=1.4.10
 
 ENV UID=991 GID=991 \
-    UPLOAD_MAX_SIZE=10G \
-    APC_SHM_SIZE=128M \
-    OPCACHE_MEM_SIZE=128 \
-    REDIS_MAX_MEMORY=64mb \
-    CRON_PERIOD=15m \
     TZ=Etc/UTC \
-    DB_TYPE=sqlite3 \
-    ADMIN_USER=admin \
-    ADMIN_PASSWORD=admin \
     INVOICEPLANE_URL=http://localhost:8888
 
 RUN apk add --no-cache \
     nginx \
+    gettext \
     su-exec \
     tzdata \
     s6 \
@@ -32,11 +25,8 @@ RUN apk add --no-cache \
     php7-opcache \
     php7-json \
     php7-pdo \
-    #php7-pdo_mysql \
-    #php7-pdo_pgsql \
-    #php7-pgsql \
-    php7-pdo_sqlite \
-    php7-sqlite3 \
+    php7-pdo_mysql \
+    php7-mysqli \
     php7-zlib \
     php7-xmlrpc \
     php7-openssl \
@@ -48,11 +38,9 @@ RUN apk add --no-cache \
  && mkdir /invoiceplane/uploads/customer_files
 
 COPY config.php /invoiceplane/application/config/config.php
-#COPY database_empty.php /invoiceplane/application/config/database_empty.php
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY php-fpm.conf /etc/php7/php-fpm.conf
 COPY my.cnf /etc/mysql/my.cnf
-#COPY opcache.ini /etc/php7/conf.d/00_opcache.ini
 COPY run.sh /usr/local/bin/run.sh
 COPY setup.sh /usr/local/bin/setup.sh
 COPY s6.d /etc/s6.d

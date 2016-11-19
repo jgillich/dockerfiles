@@ -4,7 +4,7 @@ sed -i -e "s~<INVOICEPLANE_URL>~$INVOICEPLANE_URL~g" /invoiceplane/application/c
        -e "s~<TZ>~$TZ~g" /etc/php7/php-fpm.conf
 
 
-for dir in /invoiceplane /data /etc/nginx /etc/php7 /var/log /var/log/mysql /var/lib/nginx /run/mysqld /tmp /etc/s6.d; do
+for dir in /invoiceplane /data /etc/nginx /etc/php5 /var/log /var/log/mysql /var/lib/nginx /run/mysqld /tmp /etc/s6.d; do
   if [ ! -d $dir ]; then
     mkdir -p $dir
   fi
