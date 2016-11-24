@@ -2,8 +2,7 @@ FROM debian:8
 
 ARG MAILCOW_VERSION=0.14
 
-ENV DEBIAN_FRONTEND=noninteractive \
-    UID=991 GID=991 \
+ENV UID=991 GID=991 \
     TZ=Etc/UTC \
     HOSTNAME=mail \
     DOMAIN=local
@@ -14,11 +13,7 @@ RUN apt-get update && apt-get install wget -y && \
 
 COPY mailcow.config /build/mailcow.config
 COPY run.sh /usr/local/bin/run.sh
-COPY install_pre.sh /build/install_pre.sh
-COPY install.sh /build/install.sh
 
-
-RUN chmod +x /usr/local/bin/* /build/*.sh && \
-    cd /build && /build/install_pre.sh
+RUN chmod +x /usr/local/bin/* /build/*.sh
 
 CMD run.sh
