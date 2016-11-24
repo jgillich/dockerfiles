@@ -8,5 +8,4 @@ source mailcow.config
 checkports
 checkconfig
 
-installtask environment
 installtask installpackages

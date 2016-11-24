@@ -9,6 +9,8 @@ source mailcow.config
 checkports
 checkconfig
 
+installtask environment
+
 returnwait "Certificate configuration"
 installtask ssl
 
