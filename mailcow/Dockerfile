@@ -18,7 +18,10 @@ COPY install_pre.sh /build/install_pre.sh
 COPY install.sh /build/install.sh
 
 
-RUN chmod +x /usr/local/bin/* /build/*.sh && \
+RUN sed -i -e "s~<HOSTNAME>~$HOSTNAME~g" /build/mailcow.config \
+           -e "s~<DOMAIN>~$DOMAIN~g" /build/mailcow.config \
+           -e "s~<TZ>~$TZ~g" /build/mailcow.config && \
+    chmod +x /usr/local/bin/* /build/*.sh && \
     cd /build && /build/install_pre.sh
 
 CMD run.sh
