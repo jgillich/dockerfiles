@@ -1,0 +1,4 @@
+Host   = tcp://localhost:1246
+Kernel = /var/lib/hyper/kernerl
+Initrd = /var/lib/hyper/hyper-initrd.img
+Bridge = hyper0

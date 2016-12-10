@@ -1,0 +1,10 @@
+version: '2'
+services:
+  boxbilling:
+    build: .
+    container_name: boxbilling
+    environment:
+      - BOXBILLING_URL=http://localhost:8888
+      - TZ=Europe/Berlin
+    ports:
+      - 8888:8888

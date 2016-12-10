@@ -1,0 +1,6 @@
+version: '2'
+services:
+  hyperd:
+    build: .
+    container_name: hyperd
+    privileged: true
